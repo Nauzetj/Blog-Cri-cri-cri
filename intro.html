@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido | El Grillo Cri Cri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <style>
+        :root {
+            --bg-body: #050d08;
+            --green-bright: #4ade80;
+            --text-main: #f0fdf4;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            background-image: radial-gradient(circle at center, rgba(74, 222, 128, 0.1) 0%, transparent 70%);
+            text-align: center;
+        }
+
+        .logo-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: float 6s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #a7c4b0;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .role-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 280px;
+            padding: 18px;
+            margin-bottom: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 16px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .role-btn:hover {
+            background: rgba(74, 222, 128, 0.1);
+            border-color: var(--green-bright);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+        }
+
+        .role-btn i {
+            font-size: 20px;
+            color: var(--green-bright);
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            font-size: 11px;
+            color: #5a8a6a;
+        }
+    </style>
+</head>
+
+<body>
+    <span class="logo-icon">🦗</span>
+    <h1>El Grillo Cri Cri</h1>
+    <p>Crítica Teatral Independiente</p>
+
+    <a href="index.html" class="role-btn">
+        <i class="fas fa-book-reader"></i> Soy Lector
+    </a>
+
+    <a href="admin/index.html" class="role-btn">
+        <i class="fas fa-feather-alt"></i> Soy Crítico (Admin)
+    </a>
+
+    <div class="footer">Tico Teatral © 2026</div>
+</body>
+
+</html>

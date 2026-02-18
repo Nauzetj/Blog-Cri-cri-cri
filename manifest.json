@@ -1,7 +1,7 @@
 {
     "name": "El Grillo Cri Cri",
     "short_name": "El Grillo",
-    "start_url": "index.html",
+    "start_url": "intro.html",
     "display": "standalone",
     "background_color": "#050d08",
     "theme_color": "#050d08",
