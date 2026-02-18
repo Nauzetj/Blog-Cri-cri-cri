@@ -381,53 +381,86 @@
         }
 
         @media(max-width: 600px) {
-            .review-wrapper {
-                padding: 0 12px 40px;
+            .navbar {
+                padding: 0 16px;
+                gap: 8px;
+                height: 52px;
             }
 
-            .review-hero {
-                max-height: 250px;
+            .logo-text,
+            .search-bar {
+                display: none;
+            }
+
+            .nav-actions .btn-outline {
+                border: none;
+                padding: 8px;
+                font-size: 0;
+            }
+
+            .nav-actions .btn-outline i {
+                font-size: 18px;
+                margin: 0;
+            }
+
+            .review-wrapper {
+                padding: 0 0 40px;
             }
 
             .review-body {
-                padding: 20px 0;
+                padding: 20px 16px;
+            }
+
+            .review-hero {
+                max-height: 300px;
+                border-radius: 0;
+                margin-top: -1px;
             }
 
             .review-title {
-                font-size: 24px;
+                font-size: 26px;
                 line-height: 1.2;
-            }
-
-            .verdict-box {
-                font-size: 16px;
-                padding: 16px;
-                margin: 24px 0;
+                margin-bottom: 12px;
             }
 
             .rating-pill {
-                padding: 6px 14px;
-                font-size: 13px;
-                gap: 8px;
+                width: 100%;
+                justify-content: center;
+                margin: 16px 0;
+                padding: 10px;
+                background: rgba(74, 222, 128, 0.08);
+            }
+
+            .verdict-box {
+                border-radius: 0;
+                margin: 24px -16px;
+                border-left: none;
+                border-right: none;
+                padding: 24px 20px;
+                font-size: 17px;
+            }
+
+            .content-section {
+                margin-bottom: 32px;
+            }
+
+            .desc-block,
+            .crit-block {
+                padding: 0;
+                border: none;
+            }
+
+            .section-header {
+                background: rgba(255, 255, 255, 0.03);
+                padding: 12px 16px;
+                margin: 0 -16px 16px;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
             }
 
             .rating-crickets {
                 font-size: 14px;
                 letter-spacing: 2px;
-            }
-
-            .content-section {
-                margin-bottom: 24px;
-            }
-
-            .desc-block,
-            .crit-block {
-                padding: 16px;
-                border-left-width: 2px;
-            }
-
-            .section-header {
-                padding: 0 0 10px;
-                margin-bottom: 12px;
             }
         }
 
