@@ -1,0 +1,773 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Grillo Cri Cri | Tico Teatral</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <style>
+        :root {
+            --bg-body: #050d08;
+            --bg-surface: #0a1a0e;
+            --bg-card: #0d2012;
+            --bg-card-hover: #112616;
+            --bg-input: #0f2415;
+            --border: rgba(74, 222, 128, .12);
+            --border-bright: rgba(74, 222, 128, .28);
+            --text-main: #f0fdf4;
+            --text-body: #a7c4b0;
+            --text-meta: #5a8a6a;
+            --green-bright: #4ade80;
+            --green-mid: #22c55e;
+            --green-dark: #166534;
+            --amber: #f59e0b;
+            --amber-dim: #92400e;
+            --coral: #fb7185;
+            --indigo: #818cf8;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 14px;
+            --radius-xl: 20px;
+            --radius-full: 9999px;
+            --glow-green: 0 0 20px rgba(74, 222, 128, .15);
+            --glow-amber: 0 0 20px rgba(245, 158, 11, .12);
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, .5);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse 80% 40% at 50% -10%, rgba(74, 222, 128, .06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 90% 80%, rgba(245, 158, 11, .04) 0%, transparent 60%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        button {
+            cursor: pointer;
+            font-family: var(--font-body);
+            border: none;
+            background: none
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 6px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--green-dark);
+            border-radius: 3px
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 13, 8, .85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 16px;
+            box-shadow: 0 1px 0 var(--border), var(--glow-green);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            font-size: 24px;
+            line-height: 1
+        }
+
+        .logo-text em {
+            color: var(--green-bright);
+            font-style: normal
+        }
+
+        .logo-sub {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-meta);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: -2px;
+        }
+
+        /* ── SEARCH ── */
+        .search-bar {
+            flex: 1;
+            max-width: 420px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            padding: 0 14px;
+            height: 36px;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .search-bar:focus-within {
+            border-color: var(--green-bright);
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, .1)
+        }
+
+        .search-bar i {
+            color: var(--text-meta);
+            font-size: 13px
+        }
+
+        .search-bar input {
+            background: none;
+            border: none;
+            outline: none;
+            color: var(--text-main);
+            font-size: 13px;
+            width: 100%;
+        }
+
+        .search-bar input::placeholder {
+            color: var(--text-meta)
+        }
+
+        /* ── NAV ACTIONS ── */
+        .nav-actions {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--green-mid), var(--green-bright));
+            color: #050d08;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(74, 222, 128, .35)
+        }
+
+        .btn-ghost {
+            border: 1px solid var(--border-bright);
+            color: var(--green-bright);
+            background: none;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(74, 222, 128, .08)
+        }
+
+        /* ── LAYOUT ── */
+        .page-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 16px;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 24px;
+        }
+
+        @media(max-width:768px) {
+            .page-layout {
+                grid-template-columns: 1fr
+            }
+
+            .sidebar {
+                display: none
+            }
+        }
+
+        /* ── FILTER BAR ── */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-size: 11px;
+            color: var(--text-meta);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 4px
+        }
+
+        .filter-btn {
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            color: var(--text-meta);
+            background: var(--bg-surface);
+            transition: all .2s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--green-bright);
+            color: var(--green-bright);
+            background: rgba(74, 222, 128, .08);
+        }
+
+        /* ── POST CARD ── */
+        .post-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 14px;
+            display: flex;
+            gap: 0;
+            cursor: pointer;
+            transition: border-color .2s, transform .15s, box-shadow .2s;
+            overflow: hidden;
+        }
+
+        .post-card:hover {
+            border-color: var(--border-bright);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-card), var(--glow-green);
+        }
+
+        /* Vote column */
+        .vote-column {
+            width: 48px;
+            min-width: 48px;
+            background: rgba(0, 0, 0, .2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 14px 0;
+            gap: 6px;
+            border-right: 1px solid var(--border);
+        }
+
+        .vote-btn {
+            font-size: 16px;
+            color: var(--text-meta);
+            transition: color .15s, transform .15s
+        }
+
+        .vote-btn:hover,
+        .vote-btn.active {
+            color: var(--green-bright);
+            transform: scale(1.2)
+        }
+
+        .vote-count {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-meta)
+        }
+
+        /* Content column */
+        .content-column {
+            flex: 1;
+            padding: 16px 18px;
+            min-width: 0
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--text-meta);
+            margin-bottom: 8px;
+        }
+
+        .subreddit-name {
+            color: var(--green-bright);
+            font-weight: 700
+        }
+
+        .flair-tag {
+            background: rgba(74, 222, 128, .1);
+            color: var(--green-bright);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            border: 1px solid rgba(74, 222, 128, .2);
+        }
+
+        .post-title {
+            font-family: var(--font-heading);
+            font-size: 17px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .post-preview-img {
+            width: 100%;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .post-body-text {
+            font-size: 13px;
+            color: var(--text-body);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .post-footer-actions {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .action-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-meta);
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            transition: all .15s;
+        }
+
+        .action-item:hover {
+            color: var(--green-bright);
+            border-color: var(--border-bright);
+            background: rgba(74, 222, 128, .06)
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(245, 158, 11, .1);
+            color: var(--amber);
+            border: 1px solid rgba(245, 158, 11, .2);
+        }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px
+        }
+
+        .sidebar-widget {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .widget-header {
+            background: linear-gradient(135deg, rgba(74, 222, 128, .12), rgba(74, 222, 128, .04));
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--green-bright);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .widget-content {
+            padding: 14px 16px
+        }
+
+        .community-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .community-stat:last-child {
+            border-bottom: none
+        }
+
+        .stat-val {
+            font-weight: 700;
+            color: var(--green-bright)
+        }
+
+        .rules-list {
+            padding-left: 16px;
+            font-size: 12px;
+            color: var(--text-meta);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .rules-list li {
+            line-height: 1.4
+        }
+
+        /* ── EMPTY STATE ── */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-meta)
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: .3;
+            display: block
+        }
+
+        .empty-state h3 {
+            font-family: var(--font-heading);
+            color: var(--text-main);
+            margin-bottom: 8px
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px;
+            text-align: center;
+            color: var(--text-meta);
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--text-meta);
+            transition: color .2s
+        }
+
+        footer a:hover {
+            color: var(--green-bright)
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo-area">
+            <span class="logo-icon">🦗</span>
+            <div>
+                <span class="logo-text">El Grillo <em>Cri Cri</em></span>
+                <span class="logo-sub">Tico Teatral</span>
+            </div>
+        </div>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" placeholder="Buscar críticas...">
+        </div>
+        <div class="nav-actions">
+            <button class="btn-pill btn-ghost" onclick="window.location.href='admin/index.html'">
+                <i class="fas fa-pen-nib"></i> Admin
+            </button>
+        </div>
+    </header>
+
+    <div class="page-layout">
+        <main>
+            <div class="filter-bar">
+                <span class="filter-label"><i class="fas fa-filter"></i> Filtrar</span>
+                <button class="filter-btn active" data-cat="Todos">Todos</button>
+                <button class="filter-btn" data-cat="Drama">Drama</button>
+                <button class="filter-btn" data-cat="Musical">Musical</button>
+                <button class="filter-btn" data-cat="Clásico">Clásico</button>
+                <button class="filter-btn" data-cat="Comedia">Comedia</button>
+                <button class="filter-btn" data-cat="Experimental">Experimental</button>
+                <button class="filter-btn" data-cat="Tragedia">Tragedia</button>
+            </div>
+            <div id="feed"></div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <div class="widget-header"><i class="fas fa-leaf"></i> El Muro</div>
+                <div class="widget-content">
+                    <div class="community-stat"><span>Críticas</span><span class="stat-val" id="stat-count">0</span>
+                    </div>
+                    <div class="community-stat"><span>Likes totales</span><span class="stat-val"
+                            id="stat-likes">0</span></div>
+                    <div class="community-stat"><span>Rating promedio</span><span class="stat-val"
+                            id="stat-avg">-</span></div>
+                </div>
+            </div>
+            <div class="sidebar-widget">
+                <div class="widget-header"><i class="fas fa-scroll"></i> Reglas del Muro</div>
+                <div class="widget-content">
+                    <ol class="rules-list">
+                        <li>Solo críticas de obras teatrales.</li>
+                        <li>Anonimato garantizado.</li>
+                        <li>La honestidad es la única regla.</li>
+                        <li>Sin spoilers en el título.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="sidebar-widget">
+                <div class="widget-content" style="font-size:11px;color:var(--text-meta)">
+                    <p>El Grillo Cri Cri © 2026 · Crítica independiente.</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>El Grillo Cri Cri © 2026 · Tico Teatral &nbsp;·&nbsp;
+            <a href="admin/index.html">⚙</a>
+        </p>
+    </footer>
+
+    <script>
+        var STORAGE_KEY = 'iv_muro_reviews_v2';
+        var LIKES_KEY = 'iv_muro_user_likes';
+
+        var initialData = []; // Fallback empty
+
+        async function loadReviews() {
+            try {
+                const response = await fetch('reviews.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                allReviews = await response.json();
+                // Optional: Merge with local likes
+                syncLikes();
+                renderFeed(allReviews);
+            } catch (error) {
+                console.log('Error loading reviews:', error);
+                // Fallback to local storage or empty
+                var local = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+                if (local.length) { allReviews = local; renderFeed(allReviews); }
+                else { renderFeed([]); }
+            }
+        }
+
+        function syncLikes() {
+            var localLikes = JSON.parse(localStorage.getItem(LIKES_KEY) || '[]');
+            allReviews.forEach(r => {
+                // We start with 0 likes from JSON in this static version, 
+                // or we could trust JSON if it had likes. 
+                // For a true static site, likes are read-only from JSON unless we use an external API.
+                // Here we just keep the 'liked' state visually.
+                if (localLikes.includes(r.id)) {
+                    // The user locally liked it. Logic to increment visual counter could go here
+                    // but without backend, global count won't increase.
+                }
+            });
+        }
+
+        function getReactionState(id) {
+            var likes = JSON.parse(localStorage.getItem(LIKES_KEY) || '[]');
+            return likes.indexOf(id) !== -1;
+        }
+
+        function toggleReaction(id) {
+            // Local only interaction for now
+            var likes = JSON.parse(localStorage.getItem(LIKES_KEY) || '[]');
+            var idx = likes.indexOf(id);
+            var isLiked = idx !== -1;
+
+            if (isLiked) { likes.splice(idx, 1); }
+            else { likes.push(id); }
+
+            localStorage.setItem(LIKES_KEY, JSON.stringify(likes));
+
+            // Update UI count locally just for fun (won't persist to JSON)
+            var r = allReviews.find(x => x.id === id);
+            if (r) {
+                if (!r.likes) r.likes = 0;
+                r.likes += isLiked ? -1 : 1;
+                renderFeed(allReviews); // Re-render to show count change
+            }
+            return { isLiked: !isLiked };
+        }
+
+        function crickets(rating) {
+            var s = '';
+            for (var i = 0; i < rating; i++) s += '🦗';
+            for (var j = rating; j < 5; j++) s += '<span style="opacity:.2">🦗</span>';
+            return s;
+        }
+
+        function createCard(review) {
+            var isLiked = getReactionState(review.id);
+            var voteColor = isLiked ? 'color:var(--green-bright)' : '';
+            var imgHtml = review.image ? '<img src="' + review.image + '" class="post-preview-img" loading="lazy">' : '';
+            return '<div class="post-card" onclick="goToReview(' + review.id + ')">' +
+                '<div class="vote-column" onclick="handleVote(event,' + review.id + ')">' +
+                '<i class="fas fa-arrow-up vote-btn' + (isLiked ? ' active' : '') + '" id="vote-btn-' + review.id + '" style="' + voteColor + '"></i>' +
+                '<span class="vote-count" style="opacity:0">•</span>' +
+                '<i class="fas fa-arrow-down vote-btn" style="opacity:.2;pointer-events:none"></i>' +
+                '</div>' +
+                '<div class="content-column">' +
+                '<div class="post-meta">' +
+                '<span class="subreddit-name">🦗 El Grillo</span>' +
+                '<span>•</span><span>u/Anonimo</span>' +
+                '<span>•</span><span>' + review.date + '</span>' +
+                '<span class="flair-tag">' + review.category + '</span>' +
+                '</div>' +
+                '<h3 class="post-title">' + review.title + '</h3>' +
+                imgHtml +
+                '<div class="post-body-text">' + review.excerpt + '</div>' +
+                '<div class="post-footer-actions">' +
+                '<div class="action-item"><i class="fas fa-book-open"></i> Leer Crítica</div>' +
+                '<div class="rating-badge">🦗 ' + review.rating + '/5</div>' +
+                '</div>' +
+                '</div></div>';
+        }
+
+        function goToReview(id) { window.location.href = 'review.html?id=' + id; }
+
+        function handleVote(e, id) {
+            e.stopPropagation();
+            var result = toggleReaction(id);
+            if (!result) return;
+            var btn = document.getElementById('vote-btn-' + id);
+            if (btn) {
+                btn.style.color = result.isLiked ? 'var(--green-bright)' : '';
+                btn.classList.toggle('active', result.isLiked);
+            }
+        }
+
+        var allReviews = [];
+        var activeFilter = 'Todos';
+
+        function renderFeed(reviews) {
+            var feed = document.getElementById('feed');
+            if (!reviews.length) {
+                feed.innerHTML = '<div class="empty-state"><i class="fas fa-theater-masks"></i><h3>Sin críticas aún</h3><p>Sé el primero en escribir.</p></div>';
+                return;
+            }
+            var html = '';
+            for (var i = 0; i < reviews.length; i++) html += createCard(reviews[i]);
+            feed.innerHTML = html;
+            // update sidebar stats
+            var total = allReviews.length, likes = 0, rating = 0;
+            for (var j = 0; j < allReviews.length; j++) { likes += (allReviews[j].likes || 0); rating += allReviews[j].rating; }
+            document.getElementById('stat-count').textContent = total;
+            document.getElementById('stat-likes').textContent = likes;
+            document.getElementById('stat-avg').textContent = total ? (rating / total).toFixed(1) + ' 🦗' : '-';
+        }
+
+        // Search
+        document.getElementById('search-input').addEventListener('input', function () {
+            var q = this.value.toLowerCase();
+            if (!q) { renderFeed(allReviews); return; }
+            var filtered = [];
+            for (var i = 0; i < allReviews.length; i++) {
+                if (allReviews[i].title.toLowerCase().indexOf(q) !== -1 || allReviews[i].excerpt.toLowerCase().indexOf(q) !== -1) filtered.push(allReviews[i]);
+            }
+            renderFeed(filtered);
+        });
+
+        // Filters
+        var filterBtns = document.querySelectorAll('.filter-btn');
+        for (var f = 0; f < filterBtns.length; f++) {
+            filterBtns[f].addEventListener('click', function () {
+                for (var k = 0; k < filterBtns.length; k++) filterBtns[k].classList.remove('active');
+                this.classList.add('active');
+                activeFilter = this.dataset.cat;
+                if (activeFilter === 'Todos') { renderFeed(allReviews); return; }
+                var filtered = [];
+                for (var i = 0; i < allReviews.length; i++) { if (allReviews[i].category === activeFilter) filtered.push(allReviews[i]); }
+                renderFeed(filtered);
+            });
+        }
+
+        allReviews = getReviews();
+        renderFeed(allReviews);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TEST - IV Muro</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: #f1f5f9;
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #818cf8;
+        }
+
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            border-color: #818cf8;
+        }
+
+        #log {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #94a3b8;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TEST - IV Muro</h1>
+    <p id="status">Iniciando...</p>
+    <div id="feed"></div>
+    <hr style="border-color:#334155;margin:20px 0">
+    <h3 style="color:#64748b;font-size:12px">LOG:</h3>
+    <div id="log"></div>
+
+    <script>
+        var log = document.getElementById('log');
+        function addLog(msg) { log.textContent += msg + '\n'; }
+
+        addLog('1. Script iniciado');
+
+        var STORAGE_KEY = 'iv_muro_reviews';
+        addLog('2. STORAGE_KEY = ' + STORAGE_KEY);
+
+        var raw = localStorage.getItem(STORAGE_KEY);
+        addLog('3. localStorage raw = ' + (raw ? raw.substring(0, 80) + '...' : 'null'));
+
+        var initialData = [
+            { id: 1, title: "Hamlet", category: "Clásico", date: "15 Feb 2026", excerpt: "Una puesta en escena que desafía la gravedad.", rating: 5, likes: 0 },
+            { id: 2, title: "La Casa de Bernarda Alba", category: "Drama", date: "10 Feb 2026", excerpt: "Lorca vive y respira en esta producción.", rating: 4, likes: 0 }
+        ];
+
+        var reviews;
+        try {
+            reviews = raw ? JSON.parse(raw) : null;
+            addLog('4. JSON.parse OK, reviews = ' + (reviews ? reviews.length + ' items' : 'null'));
+        } catch (e) {
+            addLog('4. ERROR JSON.parse: ' + e.message);
+            reviews = null;
+        }
+
+        if (!reviews || !Array.isArray(reviews) || reviews.length === 0) {
+            addLog('5. Usando initialData');
+            reviews = initialData;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+        } else {
+            addLog('5. Usando datos de localStorage');
+        }
+
+        addLog('6. Total reviews: ' + reviews.length);
+
+        var feed = document.getElementById('feed');
+        var html = '';
+        for (var i = 0; i < reviews.length; i++) {
+            html += '<div class="card"><strong>' + reviews[i].title + '</strong><br><small>' + reviews[i].category + ' · ' + reviews[i].date + '</small><br>' + reviews[i].excerpt + '</div>';
+        }
+        feed.innerHTML = html;
+        addLog('7. Feed renderizado con ' + reviews.length + ' tarjetas');
+
+        document.getElementById('status').textContent = '✓ Funcionando - ' + reviews.length + ' críticas cargadas';
+        document.getElementById('status').style.color = '#34d399';
+    </script>
+</body>
+
+</html>

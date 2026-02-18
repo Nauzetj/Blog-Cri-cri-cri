@@ -1,0 +1,1078 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | El Grillo Cri Cri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" type="image/svg+xml" href="../icon.svg">
+    <style>
+        :root {
+            --bg-body: #050d08;
+            --bg-surface: #0a1a0e;
+            --bg-card: #0d2012;
+            --bg-input: #0f2415;
+            --border: rgba(74, 222, 128, .12);
+            --border-bright: rgba(74, 222, 128, .28);
+            --text-main: #f0fdf4;
+            --text-body: #a7c4b0;
+            --text-meta: #5a8a6a;
+            --green-bright: #4ade80;
+            --green-mid: #22c55e;
+            --green-dark: #166534;
+            --amber: #f59e0b;
+            --coral: #fb7185;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 14px;
+            --radius-full: 9999px;
+            --glow-green: 0 0 20px rgba(74, 222, 128, .15);
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, .5);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            font-size: 14px;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse 80% 40% at 50% -10%, rgba(74, 222, 128, .06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 90% 80%, rgba(245, 158, 11, .04) 0%, transparent 60%);
+        }
+
+        button {
+            cursor: pointer;
+            font-family: var(--font-body);
+            border: none;
+            background: none
+        }
+
+        img {
+            max-width: 100%
+        }
+
+        input,
+        textarea,
+        select {
+            font-family: var(--font-body)
+        }
+
+        /* ── UTILS ── */
+        .w-full {
+            width: 100%
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 13, 8, .85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 16px;
+            box-shadow: 0 1px 0 var(--border), var(--glow-green);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .logo-icon {
+            font-size: 24px
+        }
+
+        .nav-actions {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .back-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--green-bright);
+            text-decoration: none;
+            border: 1px solid var(--border-bright);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            transition: all .2s;
+        }
+
+        .back-link:hover {
+            background: rgba(74, 222, 128, .08)
+        }
+
+        .logout-btn {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-meta);
+            transition: color .2s;
+        }
+
+        .logout-btn:hover {
+            color: var(--coral)
+        }
+
+        /* ── CONTAINER ── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px
+        }
+
+        /* ── LOGIN ── */
+        .login-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: linear-gradient(145deg, rgba(13, 32, 18, 0.95), rgba(5, 13, 8, 0.98));
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            padding: 48px 40px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(74, 222, 128, 0.05);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(74, 222, 128, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .login-icon-large {
+            font-size: 56px;
+            margin-bottom: 24px;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(74, 222, 128, 0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+
+        .login-title {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .login-subtitle {
+            font-size: 11px;
+            color: var(--text-meta);
+            margin-bottom: 32px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .login-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            color: var(--green-bright);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .login-input:focus {
+            border-color: var(--green-bright);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.1);
+            outline: none;
+        }
+
+        .login-input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 0;
+        }
+
+        .btn-login {
+            width: 100%;
+            background: var(--green-bright);
+            color: #050d08;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(74, 222, 128, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(74, 222, 128, 0.35);
+            background: #22c55e;
+        }
+
+        .login-footer-link {
+            display: inline-block;
+            margin-top: 32px;
+            font-size: 13px;
+            color: var(--text-meta);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+        .login-footer-link:hover {
+            color: var(--green-bright);
+            opacity: 1;
+        }
+
+        .error-msg {
+            background: rgba(251, 113, 133, 0.1);
+            border: 1px solid rgba(251, 113, 133, 0.3);
+            color: var(--coral);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* ── DASHBOARD ── */
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .dash-title {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            color: var(--text-main)
+        }
+
+        .main-btn {
+            background: linear-gradient(135deg, var(--green-mid), var(--green-bright));
+            color: #050d08;
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(74, 222, 128, .3);
+            transition: all .2s;
+        }
+
+        .main-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(74, 222, 128, .4)
+        }
+
+        /* ── TABLE ── */
+        .table-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: var(--text-body)
+        }
+
+        thead {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-size: 11px;
+            color: var(--green-bright);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--bg-surface);
+            font-size: 13px
+        }
+
+        tr:last-child td {
+            border-bottom: none
+        }
+
+        .review-thumb {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
+        .flair-tag {
+            background: rgba(74, 222, 128, .1);
+            color: var(--green-bright);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 700;
+            border: 1px solid rgba(74, 222, 128, .2);
+        }
+
+        .action-row {
+            display: flex;
+            gap: 8px
+        }
+
+        .mod-action-btn {
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 11px;
+            font-weight: 600;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            color: var(--text-meta);
+            transition: all .2s;
+        }
+
+        .mod-action-btn.edit:hover {
+            color: var(--green-bright);
+            border-color: var(--green-bright)
+        }
+
+        .mod-action-btn.del:hover {
+            color: var(--coral);
+            border-color: var(--coral)
+        }
+
+        /* ── EDITOR ── */
+        .editor-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-card);
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .editor-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--text-main)
+        }
+
+        .close-btn {
+            font-size: 24px;
+            color: var(--text-meta);
+            transition: color .2s
+        }
+
+        .close-btn:hover {
+            color: var(--coral)
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 20px
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .input-group label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--green-bright);
+            text-transform: uppercase
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            outline: none;
+            transition: border-color .2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--green-bright)
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px
+        }
+
+        /* Star Selector */
+        .star-select {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 4px
+        }
+
+        .star-select input {
+            display: none
+        }
+
+        .star-select label {
+            font-size: 24px;
+            color: var(--text-meta);
+            cursor: pointer;
+            transition: color .2s, transform .1s;
+        }
+
+        .star-select input:checked~label,
+        .star-select label:hover,
+        .star-select label:hover~label {
+            color: var(--green-bright);
+            text-shadow: 0 0 10px rgba(74, 222, 128, .4)
+        }
+
+        .star-select label:active {
+            transform: scale(.9)
+        }
+
+        /* Image Upload */
+        .img-upload-area {
+            border: 2px dashed var(--border-bright);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .2s;
+            background: var(--bg-surface);
+        }
+
+        .img-upload-area:hover {
+            border-color: var(--green-bright);
+            background: rgba(74, 222, 128, .04)
+        }
+
+        .img-preview {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            margin-top: 10px;
+            border: 1px solid var(--border);
+            display: none;
+        }
+
+        .editor-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-cancel {
+            padding: 10px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            color: var(--text-meta);
+            border: 1px solid var(--border);
+        }
+
+        .btn-cancel:hover {
+            color: var(--text-main);
+            background: var(--bg-input)
+        }
+
+        /* ── TOAST ── */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--green-mid);
+            color: #050d08;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all .3s;
+            z-index: 200;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== LOGIN VIEW ===== -->
+    <!-- ===== LOGIN VIEW ===== -->
+    <div id="view-login" style="display:none">
+        <div class="login-wrapper">
+            <div class="login-box">
+                <span class="login-icon-large">🦗</span>
+                <h2 class="login-title">Acceso Admin</h2>
+                <div class="login-subtitle">Panel de Control</div>
+
+                <div class="error-msg" id="login-error">
+                    <i class="fas fa-exclamation-circle"></i> Contraseña incorrecta
+                </div>
+
+                <input type="password" id="admin-pass" class="login-input" placeholder="Contraseña de editor"
+                    onkeyup="if(event.key==='Enter')checkLogin()">
+
+                <button onclick="checkLogin()" class="btn-login">
+                    Entrar al Sistema <i class="fas fa-arrow-right" style="margin-left:8px;font-size:12px"></i>
+                </button>
+
+                <div>
+                    <a href="../index.html" class="login-footer-link">← Volver al sitio público</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== DASHBOARD VIEW ===== -->
+    <div id="view-dashboard" style="display:none">
+        <header class="navbar">
+            <div class="logo-area">
+                <span class="logo-icon">🦗</span>
+                <span>Panel de Control</span>
+            </div>
+            <div class="nav-actions">
+                <a href="../index.html" class="back-link">Ver Sitio</a>
+                <button onclick="handleLogout()" class="logout-btn">Salir</button>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="dash-header">
+                <h1 class="dash-title">Críticas Publicadas</h1>
+                <div style="display:flex;gap:10px">
+                    <button onclick="downloadJSON()" class="main-btn"
+                        style="background:#0f2415;border:1px solid var(--border-bright);color:var(--green-bright)">
+                        <i class="fas fa-download"></i> Descargar DB
+                    </button>
+                    <button onclick="showEditor(0)" class="main-btn">
+                        <i class="fas fa-plus"></i> Nueva Crítica
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="40%">Obra / Título</th>
+                            <th>Categoría</th>
+                            <th>Fecha</th>
+                            <th>Rating</th>
+                            <th>Likes</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reviews-table-body">
+                        <!-- JS fills this -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== EDITOR VIEW ===== -->
+    <div id="view-editor" style="display:none">
+        <div class="container">
+            <div class="editor-container">
+                <div class="editor-header">
+                    <h2 class="editor-title" id="editor-title-text">Nueva Crítica</h2>
+                    <button onclick="showDashboard()" class="close-btn">&times;</button>
+                </div>
+
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Título de la Obra</label>
+                        <input type="text" id="e-title" placeholder="Ej: Hamlet - Una Tragedia Sin Tiempo">
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                        <div class="input-group">
+                            <label>Categoría</label>
+                            <select id="e-category">
+                                <option value="Drama">Drama</option>
+                                <option value="Comedia">Comedia</option>
+                                <option value="Musical">Musical</option>
+                                <option value="Clásico">Clásico</option>
+                                <option value="Experimental">Experimental</option>
+                                <option value="Tragedia">Tragedia</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Fecha</label>
+                            <input type="text" id="e-date" placeholder="Ej: 15 Feb 2026">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Imagen de Portada (724 x 1024)</label>
+                        <input type="file" id="e-image-file" accept="image/*" style="display:none"
+                            onchange="handleImageUpload(this)">
+                        <input type="hidden" id="e-image">
+                        <div class="img-upload-area" onclick="document.getElementById('e-image-file').click()">
+                            <i class="fas fa-cloud-upload-alt"
+                                style="font-size:24px;color:var(--text-meta);margin-bottom:8px"></i>
+                            <div id="img-filename" style="font-size:13px;color:var(--text-meta)">Clic para subir imagen
+                            </div>
+                        </div>
+                        <div id="img-preview" class="img-preview-container"
+                            style="display:none;position:relative;margin-top:10px">
+                            <img id="preview-img" src="" class="img-preview" style="display:block">
+                            <button onclick="removeImage()"
+                                style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:white;width:24px;height:24px;border-radius:50%">×</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Descripción (Ficha Técnica)</label>
+                        <textarea id="e-desc" rows="3" placeholder="Autor, Director, Elenco, Duración..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Veredicto Rápido (Snippet)</label>
+                        <textarea id="e-excerpt" rows="2"
+                            placeholder="Una frase contundente que resuma la obra..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Crítica Completa</label>
+                        <textarea id="e-full" rows="10" placeholder="Análisis detallado..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Puntuación</label>
+                        <div class="star-select">
+                            <input type="radio" name="rating" id="s5" value="5"><label for="s5">🦗</label>
+                            <input type="radio" name="rating" id="s4" value="4"><label for="s4">🦗</label>
+                            <input type="radio" name="rating" id="s3" value="3" checked><label for="s3">🦗</label>
+                            <input type="radio" name="rating" id="s2" value="2"><label for="s2">🦗</label>
+                            <input type="radio" name="rating" id="s1" value="1"><label for="s1">🦗</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="editor-actions">
+                    <button onclick="showDashboard()" class="btn-cancel">Cancelar</button>
+                    <button onclick="saveReview()" class="btn-primary" style="width:auto;padding:10px 30px">Guardar
+                        Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        var STORAGE_KEY = 'iv_muro_reviews_v2';
+        var editingId = 0;
+
+        var initialData = [
+            {
+                id: 1, title: "Hamlet - Una Tragedia Sin Tiempo", category: "Clásico", date: "15 Feb 2026",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+                description: "Obra de William Shakespeare. Dirección: Carlos Martínez.",
+                excerpt: "Una puesta en escena que desafía la gravedad del texto original.", fullReview: "La compañía Nacional de Teatro nos entrega una versión de Hamlet...", rating: 5, likes: 0
+            },
+            {
+                id: 2, title: "La Casa de Bernarda Alba", category: "Drama", date: "10 Feb 2026",
+                image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800&q=80",
+                description: "Texto de Federico García Lorca. Dirección: Ana Ruiz.",
+                excerpt: "Lorca vive y respira en esta producción.", fullReview: "Pocas obras logran crear una atmósfera tan densa...", rating: 4, likes: 0
+            },
+            {
+                id: 3, title: "Esperando a Godot", category: "Experimental", date: "5 Feb 2026",
+                image: "https://images.unsplash.com/photo-1580130775562-0ef92da028de?w=800&q=80",
+                description: "Texto de Samuel Beckett.",
+                excerpt: "Beckett en clave contemporánea.", fullReview: "La apuesta de actualizar a Beckett siempre es arriesgada.", rating: 3, likes: 0
+            }
+        ];
+
+        /* ---- Store ---- */
+        function getReviews() {
+            var d = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+            if (!d) { d = initialData; localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+            return d;
+        }
+
+        /* ---- Logic ---- */
+        function checkLogin() {
+            var p = document.getElementById('admin-pass');
+            var err = document.getElementById('login-error');
+            if (p.value === 'admin123') {
+                localStorage.setItem('iv_muro_admin', 'true');
+                showDashboard();
+                migrateImages(); // Auto-migration on login
+            } else {
+                err.style.display = 'flex';
+                p.value = '';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('iv_muro_admin');
+            showLogin();
+        }
+
+        function showLogin() {
+            document.getElementById('view-login').style.display = 'block';
+            document.getElementById('view-dashboard').style.display = 'none';
+            document.getElementById('view-editor').style.display = 'none';
+        }
+
+        function showDashboard() {
+            editingId = 0;
+            renderTable();
+            document.getElementById('view-login').style.display = 'none';
+            document.getElementById('view-dashboard').style.display = 'block';
+            document.getElementById('view-editor').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function renderTable() {
+            var reviews = getReviews();
+            var tbody = document.getElementById('reviews-table-body');
+            if (reviews.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-meta);padding:40px">Sin críticas</td></tr>';
+                return;
+            }
+            var html = '';
+            for (var i = 0; i < reviews.length; i++) {
+                var r = reviews[i];
+                html += '<tr>' +
+                    '<td><div style="display:flex;align-items:center;gap:12px">' +
+                    (r.image ? '<img src="' + r.image + '" class="review-thumb">' : '') +
+                    '<span style="font-weight:600;color:var(--text-main)">' + r.title + '</span></div></td>' +
+                    '<td><span class="flair-tag">' + r.category + '</span></td>' +
+                    '<td style="color:var(--text-meta)">' + r.date + '</td>' +
+                    '<td style="color:var(--amber);font-weight:700">🦗 ' + r.rating + '/5</td>' +
+                    '<td style="color:var(--green-bright);font-weight:700">' + (r.likes || 0) + ' ❤</td>' +
+                    '<td><div class="action-row">' +
+                    '<button class="mod-action-btn edit" onclick="showEditor(' + r.id + ')"><i class="fas fa-edit"></i></button>' +
+                    '<button class="mod-action-btn del" onclick="deleteReview(' + r.id + ')"><i class="fas fa-trash"></i></button>' +
+                    '</div></td></tr>';
+            }
+            tbody.innerHTML = html;
+        }
+
+        function showEditor(id) {
+            editingId = id;
+            document.getElementById('view-dashboard').style.display = 'none';
+            document.getElementById('view-editor').style.display = 'block';
+            window.scrollTo(0, 0);
+
+            if (id === 0) {
+                document.getElementById('editor-title-text').textContent = 'Nueva Crítica';
+                clearForm();
+            } else {
+                document.getElementById('editor-title-text').textContent = 'Editar Crítica';
+                var reviews = getReviews();
+                var r = reviews.find(x => x.id === id);
+                if (r) fillForm(r);
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('e-title').value = '';
+            document.getElementById('e-category').value = 'Drama';
+            document.getElementById('e-date').value = '';
+            document.getElementById('e-image').value = '';
+            document.getElementById('e-image-file').value = '';
+            document.getElementById('img-filename').textContent = 'Clic para subir imagen';
+            document.getElementById('img-filename').style.color = 'var(--text-meta)';
+            document.getElementById('preview-img').src = '';
+            document.getElementById('img-preview').style.display = 'none';
+            document.getElementById('e-desc').value = '';
+            document.getElementById('e-excerpt').value = '';
+            document.getElementById('e-full').value = '';
+            document.getElementById('s3').checked = true;
+        }
+
+        function fillForm(r) {
+            document.getElementById('e-title').value = r.title;
+            document.getElementById('e-category').value = r.category;
+            document.getElementById('e-date').value = r.date;
+            document.getElementById('e-desc').value = r.description || '';
+            document.getElementById('e-excerpt').value = r.excerpt;
+            document.getElementById('e-full').value = r.fullReview;
+
+            // Image handling
+            if (r.image) {
+                document.getElementById('e-image').value = r.image;
+                document.getElementById('preview-img').src = r.image;
+                document.getElementById('img-preview').style.display = 'block';
+                document.getElementById('img-filename').textContent = '✓ Imagen guardada';
+                document.getElementById('img-filename').style.color = 'var(--green-bright)';
+            } else {
+                document.getElementById('e-image').value = '';
+                document.getElementById('preview-img').src = '';
+                document.getElementById('img-preview').style.display = 'none';
+                document.getElementById('img-filename').textContent = 'Clic para subir imagen';
+                document.getElementById('img-filename').style.color = 'var(--text-meta)';
+            }
+
+            var rVal = r.rating || 3;
+            var radio = document.querySelector('input[name="rating"][value="' + rVal + '"]');
+            if (radio) radio.checked = true;
+        }
+
+        function handleImageUpload(input) {
+            var file = input.files[0];
+            if (!file) return;
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var img = new Image();
+                img.onload = function () {
+                    var canvas = document.createElement('canvas');
+                    canvas.width = 724; canvas.height = 1024;
+                    var ctx = canvas.getContext('2d');
+                    var scale = Math.max(724 / img.width, 1024 / img.height);
+                    var x = (724 - img.width * scale) / 2;
+                    var y = (1024 - img.height * scale) / 2;
+                    ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+
+                    var dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                    document.getElementById('e-image').value = dataUrl;
+                    document.getElementById('preview-img').src = dataUrl;
+                    document.getElementById('img-preview').style.display = 'block';
+                    document.getElementById('img-filename').textContent = '✓ ' + file.name + ' (Redimensionada)';
+                    document.getElementById('img-filename').style.color = 'var(--green-bright)';
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeImage() {
+            document.getElementById('e-image').value = '';
+            document.getElementById('e-image-file').value = '';
+            document.getElementById('preview-img').src = '';
+            document.getElementById('img-preview').style.display = 'none';
+            document.getElementById('img-filename').textContent = 'Clic para subir imagen';
+            document.getElementById('img-filename').style.color = 'var(--text-meta)';
+        }
+
+        function saveReview() {
+            var title = document.getElementById('e-title').value.trim();
+            if (!title) { showToast('Falta el título'); return; }
+
+            var reviews = getReviews();
+            var rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
+
+            var newReview = {
+                id: editingId || Date.now(),
+                title: title,
+                category: document.getElementById('e-category').value,
+                date: document.getElementById('e-date').value || new Date().toLocaleDateString(),
+                image: document.getElementById('e-image').value,
+                description: document.getElementById('e-desc').value,
+                excerpt: document.getElementById('e-excerpt').value,
+                fullReview: document.getElementById('e-full').value,
+                rating: rating,
+                likes: editingId ? (reviews.find(x => x.id === editingId)?.likes || 0) : 0
+            };
+
+            if (editingId) {
+                var idx = reviews.findIndex(x => x.id === editingId);
+                if (idx !== -1) reviews[idx] = newReview;
+            } else {
+                reviews.unshift(newReview);
+            }
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+            showToast('Crítica guardada exitosamente');
+            showDashboard();
+        }
+
+        function deleteReview(id) {
+            if (!confirm('¿Seguro quieres borrar esta crítica?')) return;
+            var reviews = getReviews();
+            var filtered = reviews.filter(x => x.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+            renderTable();
+            showToast('Crítica eliminada');
+        }
+
+        function showToast(msg) {
+            var t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        function downloadJSON() {
+            var data = localStorage.getItem(STORAGE_KEY);
+            if (!data) { showToast('No hay datos para descargar'); return; }
+
+            var blob = new Blob([data], { type: 'application/json' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'reviews.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast('Base de datos descargada');
+        }
+
+        /* ---- Image Migration ---- */
+        function migrateImages() {
+            if (localStorage.getItem('iv_muro_img_migrated_v2')) return;
+            var reviews = getReviews();
+            var pending = 0;
+
+            function checkDone() {
+                if (pending === 0) {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+                    localStorage.setItem('iv_muro_img_migrated_v2', 'true');
+                    renderTable();
+                }
+            }
+
+            reviews.forEach(r => {
+                if (r.image && r.image.startsWith('http')) {
+                    pending++;
+                    var img = new Image();
+                    img.crossOrigin = 'anonymous';
+                    img.onload = function () {
+                        var canvas = document.createElement('canvas');
+                        canvas.width = 724; canvas.height = 1024;
+                        var ctx = canvas.getContext('2d');
+                        var scale = Math.max(724 / img.width, 1024 / img.height);
+                        var x = (724 - img.width * scale) / 2;
+                        var y = (1024 - img.height * scale) / 2;
+                        ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+                        r.image = canvas.toDataURL('image/jpeg', 0.85);
+                        pending--;
+                        checkDone();
+                    };
+                    img.onerror = function () { pending--; checkDone(); };
+                    img.src = r.image;
+                }
+            });
+            if (pending === 0) localStorage.setItem('iv_muro_img_migrated_v2', 'true');
+        }
+
+        /* ---- Init ---- */
+        if (localStorage.getItem('iv_muro_admin') === 'true') {
+            showDashboard();
+            setTimeout(migrateImages, 1000);
+        } else {
+            showLogin();
+        }
+    </script>
+</body>
+
+</html>

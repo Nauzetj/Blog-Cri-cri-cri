@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1, 
+    "title": "Hamlet - Una Tragedia Sin Tiempo", 
+    "category": "Clásico", 
+    "date": "15 Feb 2026",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    "description": "Obra de William Shakespeare. Dirección: Carlos Martínez. Elenco: Pedro Alonso (Hamlet), María García (Ofelia). Duración: 2h 30min. Teatro Nacional.",
+    "excerpt": "Una puesta en escena que desafía la gravedad del texto original. El director logra lo imposible: hacer que Shakespeare se sienta urgente.",
+    "fullReview": "La compañía Nacional de Teatro nos entrega una versión de Hamlet que pocas veces se ve en nuestras tablas. El protagonista logra transmitir la duda existencial del príncipe danés sin caer en los clichés habituales. La escenografía minimalista obliga al espectador a concentrarse en lo que realmente importa: las palabras y los cuerpos.",
+    "rating": 5, 
+    "likes": 0
+  },
+  {
+    "id": 2, 
+    "title": "La Casa de Bernarda Alba", 
+    "category": "Drama", 
+    "date": "10 Feb 2026",
+    "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800&q=80",
+    "description": "Texto de Federico García Lorca. Dirección: Ana Ruiz. Elenco enteramente femenino. Duración: 1h 45min. Teatro Lorca.",
+    "excerpt": "Lorca vive y respira en esta producción. La opresión se siente física, casi tangible desde la primera fila.",
+    "fullReview": "Pocas obras logran crear una atmósfera tan densa como esta versión de Bernarda Alba. El director apostó por un espacio escénico cerrado, claustrofóbico. Las actrices entregan actuaciones de una precisión quirúrgica.",
+    "rating": 4, 
+    "likes": 0
+  },
+  {
+    "id": 3, 
+    "title": "Esperando a Godot", 
+    "category": "Experimental", 
+    "date": "5 Feb 2026",
+    "image": "https://images.unsplash.com/photo-1580130775562-0ef92da028de?w=800&q=80",
+    "description": "Texto de Samuel Beckett. Dirección: Javier Moreno. Duración: 2h. Sala Alternativa del Centro Cultural.",
+    "excerpt": "Beckett en clave contemporánea. Funciona a medias.",
+    "fullReview": "La apuesta de actualizar a Beckett siempre es arriesgada. Los primeros dos actos son fascinantes.",
+    "rating": 3, 
+    "likes": 0
+  }
+]

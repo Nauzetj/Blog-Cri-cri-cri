@@ -1,0 +1,501 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crítica | El Grillo Cri Cri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <style>
+        :root {
+            --bg-body: #050d08;
+            --bg-surface: #0a1a0e;
+            --bg-card: #0d2012;
+            --bg-input: #0f2415;
+            --border: rgba(74, 222, 128, .12);
+            --border-bright: rgba(74, 222, 128, .28);
+            --text-main: #f0fdf4;
+            --text-body: #a7c4b0;
+            --text-meta: #5a8a6a;
+            --green-bright: #4ade80;
+            --green-mid: #22c55e;
+            --amber: #f59e0b;
+            --coral: #fb7185;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 14px;
+            --radius-full: 9999px;
+            --glow-green: 0 0 24px rgba(74, 222, 128, .12);
+            --shadow-card: 0 8px 40px rgba(0, 0, 0, .6);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.7;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse 80% 40% at 50% -10%, rgba(74, 222, 128, .07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 90% 80%, rgba(245, 158, 11, .04) 0%, transparent 60%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        button {
+            cursor: pointer;
+            font-family: var(--font-body);
+            border: none;
+            background: none
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #166534;
+            border-radius: 3px
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 13, 8, .85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 16px;
+            box-shadow: 0 1px 0 var(--border), var(--glow-green);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            font-size: 24px;
+            line-height: 1
+        }
+
+        .logo-text em {
+            color: var(--green-bright);
+            font-style: normal
+        }
+
+        .logo-sub {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-meta);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: -2px;
+        }
+
+        .nav-actions {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .btn-round {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 16px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            transition: all .2s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-bright);
+            color: var(--green-bright);
+        }
+
+        .btn-outline:hover {
+            background: rgba(74, 222, 128, .08)
+        }
+
+        /* ── HERO IMAGE ── */
+        .review-hero {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── MAIN CONTENT ── */
+        .review-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 16px 60px
+        }
+
+        .review-body {
+            padding: 32px 0
+        }
+
+        .review-meta-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-meta);
+            margin-bottom: 16px;
+        }
+
+        .flair-tag {
+            background: rgba(74, 222, 128, .1);
+            color: var(--green-bright);
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            border: 1px solid rgba(74, 222, 128, .2);
+        }
+
+        .review-title {
+            font-family: var(--font-heading);
+            font-size: clamp(24px, 4vw, 36px);
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        /* ── RATING PILL ── */
+        .rating-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #0d2010, #0a1a0a);
+            border: 1.5px solid rgba(74, 222, 128, .35);
+            box-shadow: 0 0 20px rgba(74, 222, 128, .1), inset 0 1px 0 rgba(255, 255, 255, .04);
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            margin-bottom: 28px;
+        }
+
+        .rating-score {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--green-bright);
+            letter-spacing: .5px;
+        }
+
+        .rating-crickets {
+            font-size: 18px;
+            letter-spacing: 3px
+        }
+
+        /* ── VERDICT BOX ── */
+        .verdict-box {
+            background: linear-gradient(135deg, rgba(74, 222, 128, .06), rgba(74, 222, 128, .02));
+            border-left: 3px solid var(--green-bright);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 18px 22px;
+            margin-bottom: 32px;
+            font-family: var(--font-heading);
+            font-size: 17px;
+            font-style: italic;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* ── CONTENT SECTIONS ── */
+        .content-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header.desc {
+            background: linear-gradient(135deg, rgba(74, 222, 128, .08), transparent)
+        }
+
+        .section-header.crit {
+            background: linear-gradient(135deg, rgba(245, 158, 11, .08), transparent)
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .section-icon.desc {
+            background: rgba(74, 222, 128, .15);
+            color: var(--green-bright)
+        }
+
+        .section-icon.crit {
+            background: rgba(245, 158, 11, .15);
+            color: var(--amber)
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-main)
+        }
+
+        .section-badge {
+            margin-left: auto;
+            padding: 2px 10px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        .section-badge.desc {
+            background: rgba(74, 222, 128, .12);
+            color: var(--green-bright)
+        }
+
+        .section-badge.crit {
+            background: rgba(245, 158, 11, .12);
+            color: var(--amber)
+        }
+
+        .desc-block {
+            padding: 20px;
+            border-left: 3px solid var(--green-bright)
+        }
+
+        .crit-block {
+            padding: 20px;
+            border-left: 3px solid var(--amber)
+        }
+
+        .section-text {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.8
+        }
+
+        .section-text p {
+            margin-bottom: 12px
+        }
+
+        .section-text p:last-child {
+            margin-bottom: 0
+        }
+
+        /* ── COMMENTS DISABLED ── */
+        .comments-disabled {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-meta);
+            font-size: 13px;
+            border: 1px dashed var(--border);
+            border-radius: var(--radius-lg);
+            margin-top: 28px;
+        }
+
+        /* ── EMPTY STATE ── */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-meta)
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: .3;
+            display: block
+        }
+
+        .empty-state h3 {
+            font-family: var(--font-heading);
+            color: var(--text-main);
+            margin-bottom: 8px
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px;
+            text-align: center;
+            color: var(--text-meta);
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo-area">
+            <span class="logo-icon">🦗</span>
+            <div>
+                <span class="logo-text">El Grillo <em>Cri Cri</em></span>
+                <span class="logo-sub">Tico Teatral</span>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <a href="index.html" class="btn-round btn-outline">
+                <i class="fas fa-arrow-left"></i> Volver al Muro
+            </a>
+        </div>
+    </header>
+
+    <div id="review-content"></div>
+
+    <footer>
+        <p>El Grillo Cri Cri © 2026 · Tico Teatral</p>
+    </footer>
+
+    <script>
+        var STORAGE_KEY = 'iv_muro_reviews_v2';
+        var initialData = [];
+
+        async function loadReview() {
+            var params = new URLSearchParams(window.location.search);
+            var id = parseInt(params.get('id'), 10);
+
+            var reviews = [];
+            try {
+                const response = await fetch('reviews.json');
+                if (response.ok) reviews = await response.json();
+            } catch (e) {
+                console.log('Error loading json, trying local');
+                reviews = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            }
+
+            // Fallback to local if json empty or failed
+            if (!reviews.length) {
+                reviews = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            }
+
+            var review = reviews.find(x => x.id === id);
+            renderReview(review);
+        }
+
+        function textToParas(t) {
+            if (!t) return '';
+            return t.split('\n').filter(function (l) { return l.trim() }).map(function (l) { return '<p>' + l + '</p>' }).join('');
+        }
+
+        function renderReview(review) {
+            var container = document.getElementById('review-content');
+
+            if (!review) {
+                container.innerHTML = '<div class="review-wrapper"><div class="empty-state"><i class="fas fa-ghost"></i><h3>Crítica no encontrada</h3><p><a href="index.html" style="color:var(--green-bright)">Volver al muro</a></p></div></div>';
+                return;
+            }
+
+            document.title = review.title + ' | El Grillo Cri Cri';
+            var stars = '';
+            for (var s = 0; s < review.rating; s++) stars += '<span style="opacity:1">🦗</span>';
+            for (var s2 = review.rating; s2 < 5; s2++) stars += '<span style="opacity:0.2">🦗</span>';
+
+            var descHtml = review.description
+                ? '<div class="content-section">' +
+                '<div class="section-header desc">' +
+                '<div class="section-icon desc"><i class="fas fa-align-left"></i></div>' +
+                '<span class="section-title">Descripción</span>' +
+                '<span class="section-badge desc">Ficha de la obra</span>' +
+                '</div>' +
+                '<div class="desc-block"><div class="section-text">' + textToParas(review.description) + '</div></div>' +
+                '</div>'
+                : '';
+
+            var critHtml = '<div class="content-section">' +
+                '<div class="section-header crit">' +
+                '<div class="section-icon crit"><i class="fas fa-feather-alt"></i></div>' +
+                '<span class="section-title">Crítica</span>' +
+                '<span class="section-badge crit">Análisis</span>' +
+                '</div>' +
+                '<div class="crit-block"><div class="section-text">' + textToParas(review.fullReview) + '</div></div>' +
+                '</div>';
+
+            container.innerHTML =
+                (review.image ? '<img src="' + review.image + '" class="review-hero" alt="' + review.title + '">' : '') +
+                '<div class="review-wrapper"><div class="review-body">' +
+                '<div class="review-meta-row">' +
+                '<span class="flair-tag">' + review.category + '</span>' +
+                '<span>•</span><span>u/Anonimo</span>' +
+                '<span>•</span><span>' + review.date + '</span>' +
+                '</div>' +
+                '<h1 class="review-title">' + review.title + '</h1>' +
+                '<div class="rating-pill"><span class="rating-score">🦗 ' + review.rating + '/5</span><span class="rating-crickets">' + stars + '</span></div>' +
+                '<div class="verdict-box">"' + review.excerpt + '"</div>' +
+                descHtml + critHtml +
+                '<div class="comments-disabled"><i class="fas fa-comment-slash"></i> &nbsp; Los comentarios están desactivados en este muro.</div>' +
+                '</div></div>';
+        }
+
+        // Init
+        loadReview();    </script>
+</body>
+
+</html>
