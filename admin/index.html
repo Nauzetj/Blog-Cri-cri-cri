@@ -79,13 +79,22 @@
             font-family: var(--font-body)
         }
 
-        /* ── UTILS ── */
-        .w-full {
-            width: 100%
-        }
-
         .hidden {
             display: none !important
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 5px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--green-dark);
+            border-radius: 3px
         }
 
         /* ── NAVBAR ── */
@@ -93,51 +102,57 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(5, 13, 8, .85);
-            backdrop-filter: blur(20px);
+            background: rgba(5, 13, 8, .92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border);
-            height: 56px;
+            height: 54px;
             display: flex;
             align-items: center;
-            padding: 0 24px;
-            gap: 16px;
+            padding: 0 20px;
+            gap: 12px;
             box-shadow: 0 1px 0 var(--border), var(--glow-green);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-family: var(--font-heading);
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--text-main);
+            white-space: nowrap;
         }
 
         .logo-icon {
-            font-size: 24px
+            font-size: 22px
         }
 
         .nav-actions {
             margin-left: auto;
             display: flex;
             align-items: center;
-            gap: 12px
+            gap: 10px
         }
 
         .back-link {
             font-size: 12px;
             font-weight: 600;
             color: var(--green-bright);
-            text-decoration: none;
             border: 1px solid var(--border-bright);
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: var(--radius-full);
             transition: all .2s;
+            white-space: nowrap;
         }
 
         .back-link:hover {
             background: rgba(74, 222, 128, .08)
+        }
+
+        .back-link:active {
+            transform: scale(0.95);
         }
 
         .logout-btn {
@@ -155,7 +170,7 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px
+            padding: 24px 16px
         }
 
         /* ── LOGIN ── */
@@ -168,17 +183,16 @@
         }
 
         .login-box {
-            background: linear-gradient(145deg, rgba(13, 32, 18, 0.95), rgba(5, 13, 8, 0.98));
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            padding: 48px 40px;
+            background: linear-gradient(145deg, rgba(13, 32, 18, .95), rgba(5, 13, 8, .98));
+            border: 1px solid rgba(74, 222, 128, .2);
+            padding: 48px 36px;
             border-radius: 24px;
             width: 100%;
             max-width: 380px;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(74, 222, 128, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .6);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
         }
 
         .login-box::before {
@@ -188,15 +202,15 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at center, rgba(74, 222, 128, 0.04) 0%, transparent 60%);
+            background: radial-gradient(circle at center, rgba(74, 222, 128, .04) 0%, transparent 60%);
             pointer-events: none;
         }
 
         .login-icon-large {
             font-size: 56px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             display: inline-block;
-            filter: drop-shadow(0 0 20px rgba(74, 222, 128, 0.2));
+            filter: drop-shadow(0 0 20px rgba(74, 222, 128, .2));
             animation: float 6s ease-in-out infinite;
         }
 
@@ -214,16 +228,15 @@
 
         .login-title {
             font-family: var(--font-heading);
-            font-size: 32px;
+            font-size: 30px;
             color: var(--text-main);
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
+            margin-bottom: 4px;
         }
 
         .login-subtitle {
             font-size: 11px;
             color: var(--text-meta);
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 700;
@@ -231,27 +244,26 @@
 
         .login-input {
             width: 100%;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, .2);
             border: 1px solid var(--border);
             color: var(--green-bright);
-            padding: 16px;
+            padding: 14px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-size: 15px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all .3s;
             letter-spacing: 1px;
+            outline: none;
         }
 
         .login-input:focus {
             border-color: var(--green-bright);
-            background: rgba(0, 0, 0, 0.4);
-            box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.1);
-            outline: none;
+            box-shadow: 0 0 0 4px rgba(74, 222, 128, .1);
         }
 
         .login-input::placeholder {
-            color: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, .2);
             letter-spacing: 0;
         }
 
@@ -259,36 +271,34 @@
             width: 100%;
             background: var(--green-bright);
             color: #050d08;
-            padding: 16px;
+            padding: 14px;
             border-radius: 12px;
             font-weight: 800;
             font-size: 15px;
-            letter-spacing: 0.5px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(74, 222, 128, 0.25);
+            transition: all .3s;
+            box-shadow: 0 4px 20px rgba(74, 222, 128, .25);
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            border: none;
-            font-family: var(--font-body);
+            gap: 8px;
         }
 
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(74, 222, 128, 0.35);
-            background: #22c55e;
+            box-shadow: 0 8px 30px rgba(74, 222, 128, .35);
+        }
+
+        .btn-login:active {
+            transform: scale(0.97);
         }
 
         .login-footer-link {
             display: inline-block;
-            margin-top: 32px;
+            margin-top: 24px;
             font-size: 13px;
             color: var(--text-meta);
-            text-decoration: none;
-            transition: color 0.2s;
-            font-weight: 500;
-            opacity: 0.7;
+            opacity: .7;
+            transition: all .2s;
         }
 
         .login-footer-link:hover {
@@ -297,98 +307,157 @@
         }
 
         .error-msg {
-            background: rgba(251, 113, 133, 0.1);
-            border: 1px solid rgba(251, 113, 133, 0.3);
+            background: rgba(251, 113, 133, .1);
+            border: 1px solid rgba(251, 113, 133, .3);
             color: var(--coral);
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: none;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
 
-        /* ── DASHBOARD ── */
+        /* ── DASHBOARD HEADER ── */
         .dash-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .dash-title {
             font-family: var(--font-heading);
-            font-size: 28px;
+            font-size: 26px;
             color: var(--text-main)
+        }
+
+        .dash-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .main-btn {
             background: linear-gradient(135deg, var(--green-mid), var(--green-bright));
             color: #050d08;
-            padding: 10px 24px;
+            padding: 9px 18px;
             border-radius: var(--radius-full);
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             box-shadow: 0 4px 12px rgba(74, 222, 128, .3);
             transition: all .2s;
         }
 
         .main-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             box-shadow: 0 6px 16px rgba(74, 222, 128, .4)
         }
 
-        /* ── TABLE ── */
-        .table-container {
+        .main-btn:active {
+            transform: scale(0.96);
+        }
+
+        .sec-btn {
+            background: var(--bg-input);
+            border: 1px solid var(--border-bright);
+            color: var(--green-bright);
+            padding: 9px 18px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all .2s;
+        }
+
+        .sec-btn:hover {
+            background: rgba(74, 222, 128, .08);
+        }
+
+        .sec-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* ── REVIEW CARDS (mobile-first, table on desktop) ── */
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .review-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-card);
+            display: flex;
+            align-items: stretch;
+            transition: border-color .2s;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            color: var(--text-body)
+        .review-card:hover {
+            border-color: var(--border-bright);
         }
 
-        thead {
-            background: var(--bg-surface);
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
-            padding: 16px;
-            text-align: left;
-            font-size: 11px;
-            color: var(--green-bright);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        td {
-            padding: 16px;
-            border-bottom: 1px solid var(--bg-surface);
-            font-size: 13px
-        }
-
-        tr:last-child td {
-            border-bottom: none
-        }
-
-        .review-thumb {
-            width: 40px;
-            height: 40px;
+        .review-card-thumb {
+            width: 72px;
+            min-width: 72px;
+            height: 72px;
             object-fit: cover;
-            border-radius: var(--radius-sm);
+            align-self: center;
+            margin: 12px 0 12px 12px;
+            border-radius: var(--radius-md);
             border: 1px solid var(--border);
+        }
+
+        .review-card-thumb-placeholder {
+            width: 72px;
+            min-width: 72px;
+            height: 72px;
+            background: var(--bg-input);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 12px 0 12px 12px;
+            border: 1px solid var(--border);
+        }
+
+        .review-card-body {
+            flex: 1;
+            padding: 12px 14px;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .review-card-title {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .review-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .flair-tag {
@@ -401,30 +470,52 @@
             border: 1px solid rgba(74, 222, 128, .2);
         }
 
-        .action-row {
-            display: flex;
-            gap: 8px
+        .review-card-rating {
+            color: var(--amber);
+            font-size: 12px;
+            font-weight: 700;
         }
 
-        .mod-action-btn {
-            padding: 4px 10px;
-            border-radius: var(--radius-sm);
-            font-size: 11px;
-            font-weight: 600;
-            background: var(--bg-input);
-            border: 1px solid var(--border);
+        .review-card-date {
             color: var(--text-meta);
-            transition: all .2s;
+            font-size: 11px;
         }
 
-        .mod-action-btn.edit:hover {
+        .review-card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 12px;
+            border-left: 1px solid var(--border);
+            justify-content: center;
+        }
+
+        .mod-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            border: 1px solid var(--border);
+            background: var(--bg-input);
+            color: var(--text-meta);
+            transition: all .15s;
+        }
+
+        .mod-btn.edit:hover {
             color: var(--green-bright);
-            border-color: var(--green-bright)
+            border-color: var(--green-bright);
         }
 
-        .mod-action-btn.del:hover {
+        .mod-btn.del:hover {
             color: var(--coral);
-            border-color: var(--coral)
+            border-color: var(--coral);
+        }
+
+        .mod-btn:active {
+            transform: scale(0.88);
         }
 
         /* ── EDITOR ── */
@@ -432,7 +523,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 40px;
+            padding: 24px;
             max-width: 800px;
             margin: 0 auto;
             box-shadow: var(--shadow-card);
@@ -443,20 +534,21 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .editor-title {
             font-family: var(--font-heading);
-            font-size: 24px;
+            font-size: 22px;
             color: var(--text-main)
         }
 
         .close-btn {
-            font-size: 24px;
+            font-size: 22px;
             color: var(--text-meta);
-            transition: color .2s
+            transition: color .2s;
+            line-height: 1;
         }
 
         .close-btn:hover {
@@ -464,21 +556,29 @@
         }
 
         .form-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-row {
             display: grid;
-            gap: 20px
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 8px
+            gap: 6px;
         }
 
         .input-group label {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--green-bright);
-            text-transform: uppercase
+            text-transform: uppercase;
+            letter-spacing: .5px;
         }
 
         input[type="text"],
@@ -488,11 +588,12 @@
             background: var(--bg-input);
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 12px;
+            padding: 11px 12px;
             border-radius: var(--radius-md);
             font-size: 14px;
             outline: none;
             transition: border-color .2s;
+            width: 100%;
         }
 
         input:focus,
@@ -503,10 +604,11 @@
 
         textarea {
             resize: vertical;
-            min-height: 100px
+            min-height: 90px;
+            line-height: 1.6;
         }
 
-        /* Star Selector */
+        /* Rating selector */
         .star-select {
             display: flex;
             flex-direction: row-reverse;
@@ -519,10 +621,10 @@
         }
 
         .star-select label {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--text-meta);
             cursor: pointer;
-            transition: color .2s, transform .1s;
+            transition: color .15s, transform .1s;
         }
 
         .star-select input:checked~label,
@@ -533,14 +635,14 @@
         }
 
         .star-select label:active {
-            transform: scale(.9)
+            transform: scale(.85)
         }
 
-        /* Image Upload */
+        /* Image upload */
         .img-upload-area {
             border: 2px dashed var(--border-bright);
             border-radius: var(--radius-md);
-            padding: 30px;
+            padding: 24px;
             text-align: center;
             cursor: pointer;
             transition: all .2s;
@@ -554,10 +656,9 @@
 
         .img-preview {
             width: 100%;
-            max-height: 300px;
+            max-height: 200px;
             object-fit: cover;
             border-radius: var(--radius-md);
-            margin-top: 10px;
             border: 1px solid var(--border);
             display: none;
         }
@@ -565,18 +666,20 @@
         .editor-actions {
             display: flex;
             justify-content: flex-end;
-            gap: 12px;
-            margin-top: 30px;
-            padding-top: 20px;
+            gap: 10px;
+            margin-top: 24px;
+            padding-top: 18px;
             border-top: 1px solid var(--border);
+            flex-wrap: wrap;
         }
 
         .btn-cancel {
-            padding: 10px 24px;
+            padding: 10px 20px;
             border-radius: var(--radius-md);
             font-weight: 600;
             color: var(--text-meta);
             border: 1px solid var(--border);
+            transition: all .2s;
         }
 
         .btn-cancel:hover {
@@ -584,26 +687,104 @@
             background: var(--bg-input)
         }
 
+        .btn-save {
+            padding: 10px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--green-mid), var(--green-bright));
+            color: #050d08;
+            transition: all .2s;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(74, 222, 128, .3);
+        }
+
+        .btn-save:active {
+            transform: scale(0.96);
+        }
+
         /* ── TOAST ── */
         .toast {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
             background: var(--green-mid);
             color: #050d08;
             padding: 12px 24px;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-full);
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
-            transform: translateY(100px);
+            font-size: 13px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .4);
             opacity: 0;
             transition: all .3s;
             z-index: 200;
+            white-space: nowrap;
         }
 
         .toast.show {
-            transform: translateY(0);
-            opacity: 1
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width: 600px) {
+            .navbar {
+                padding: 0 14px;
+            }
+
+            .logo-area span:not(.logo-icon) {
+                display: none;
+            }
+
+            .back-link span {
+                display: none;
+            }
+
+            .back-link {
+                padding: 7px 10px;
+            }
+
+            .container {
+                padding: 16px 12px;
+            }
+
+            .dash-title {
+                font-size: 20px;
+            }
+
+            .main-btn,
+            .sec-btn {
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .editor-container {
+                padding: 16px;
+                border-radius: var(--radius-md);
+            }
+
+            .editor-actions {
+                justify-content: stretch;
+            }
+
+            .btn-cancel,
+            .btn-save {
+                flex: 1;
+                text-align: center;
+                justify-content: center;
+                display: flex;
+            }
+
+            .star-select label {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
@@ -611,25 +792,20 @@
 <body>
 
     <!-- ===== LOGIN VIEW ===== -->
-    <!-- ===== LOGIN VIEW ===== -->
     <div id="view-login" style="display:none">
         <div class="login-wrapper">
             <div class="login-box">
                 <span class="login-icon-large">🦗</span>
                 <h2 class="login-title">Acceso Admin</h2>
                 <div class="login-subtitle">Panel de Control</div>
-
                 <div class="error-msg" id="login-error">
                     <i class="fas fa-exclamation-circle"></i> Contraseña incorrecta
                 </div>
-
                 <input type="password" id="admin-pass" class="login-input" placeholder="Contraseña de editor"
                     onkeyup="if(event.key==='Enter')checkLogin()">
-
                 <button onclick="checkLogin()" class="btn-login">
-                    Entrar al Sistema <i class="fas fa-arrow-right" style="margin-left:8px;font-size:12px"></i>
+                    Entrar al Sistema <i class="fas fa-arrow-right" style="font-size:12px"></i>
                 </button>
-
                 <div>
                     <a href="../index.html" class="login-footer-link">← Volver al sitio público</a>
                 </div>
@@ -642,50 +818,51 @@
         <header class="navbar">
             <div class="logo-area">
                 <span class="logo-icon">🦗</span>
-                <span>Panel de Control</span>
+                <span>Panel Admin</span>
             </div>
             <div class="nav-actions">
-                <a href="../index.html" class="back-link">Ver Sitio</a>
-                <button onclick="handleLogout()" class="logout-btn">Salir</button>
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-eye"></i> <span>Ver Sitio</span>
+                </a>
+                <button onclick="handleLogout()" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
             </div>
         </header>
 
         <div class="container">
             <div class="dash-header">
-                <h1 class="dash-title">Críticas Publicadas</h1>
-                <div style="display:flex;gap:10px">
-                    <button onclick="downloadJSON()" class="main-btn"
-                        style="background:#0f2415;border:1px solid var(--border-bright);color:var(--green-bright)">
-                        <i class="fas fa-download"></i> Descargar DB
+                <h1 class="dash-title">Críticas</h1>
+                <div class="dash-actions">
+                    <button onclick="downloadJSON()" class="sec-btn">
+                        <i class="fas fa-download"></i> DB
                     </button>
                     <button onclick="showEditor(0)" class="main-btn">
-                        <i class="fas fa-plus"></i> Nueva Crítica
+                        <i class="fas fa-plus"></i> Nueva
                     </button>
                 </div>
             </div>
 
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th width="40%">Obra / Título</th>
-                            <th>Categoría</th>
-                            <th>Fecha</th>
-                            <th>Rating</th>
-                            <th>Likes</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="reviews-table-body">
-                        <!-- JS fills this -->
-                    </tbody>
-                </table>
+            <div class="review-list" id="review-list">
+                <!-- JS fills this -->
             </div>
         </div>
     </div>
 
     <!-- ===== EDITOR VIEW ===== -->
     <div id="view-editor" style="display:none">
+        <header class="navbar">
+            <div class="logo-area">
+                <span class="logo-icon">🦗</span>
+                <span id="editor-nav-title">Nueva Crítica</span>
+            </div>
+            <div class="nav-actions">
+                <button onclick="showDashboard()" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span>Volver</span>
+                </button>
+            </div>
+        </header>
+
         <div class="container">
             <div class="editor-container">
                 <div class="editor-header">
@@ -699,7 +876,7 @@
                         <input type="text" id="e-title" placeholder="Ej: Hamlet - Una Tragedia Sin Tiempo">
                     </div>
 
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                    <div class="form-row">
                         <div class="input-group">
                             <label>Categoría</label>
                             <select id="e-category">
@@ -718,26 +895,25 @@
                     </div>
 
                     <div class="input-group">
-                        <label>Imagen de Portada (724 x 1024)</label>
+                        <label>Imagen de Portada</label>
                         <input type="file" id="e-image-file" accept="image/*" style="display:none"
                             onchange="handleImageUpload(this)">
                         <input type="hidden" id="e-image">
                         <div class="img-upload-area" onclick="document.getElementById('e-image-file').click()">
                             <i class="fas fa-cloud-upload-alt"
-                                style="font-size:24px;color:var(--text-meta);margin-bottom:8px"></i>
-                            <div id="img-filename" style="font-size:13px;color:var(--text-meta)">Clic para subir imagen
+                                style="font-size:22px;color:var(--text-meta);margin-bottom:6px;display:block"></i>
+                            <div id="img-filename" style="font-size:13px;color:var(--text-meta)">Toca para subir imagen
                             </div>
                         </div>
-                        <div id="img-preview" class="img-preview-container"
-                            style="display:none;position:relative;margin-top:10px">
+                        <div id="img-preview" style="display:none;position:relative;margin-top:8px">
                             <img id="preview-img" src="" class="img-preview" style="display:block">
                             <button onclick="removeImage()"
-                                style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:white;width:24px;height:24px;border-radius:50%">×</button>
+                                style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.7);color:white;width:28px;height:28px;border-radius:50%;font-size:16px;display:flex;align-items:center;justify-content:center">×</button>
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <label>Descripción (Ficha Técnica)</label>
+                        <label>Descripción / Ficha Técnica</label>
                         <textarea id="e-desc" rows="3" placeholder="Autor, Director, Elenco, Duración..."></textarea>
                     </div>
 
@@ -766,8 +942,9 @@
 
                 <div class="editor-actions">
                     <button onclick="showDashboard()" class="btn-cancel">Cancelar</button>
-                    <button onclick="saveReview()" class="btn-primary" style="width:auto;padding:10px 30px">Guardar
-                        Cambios</button>
+                    <button onclick="saveReview()" class="btn-save">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
                 </div>
             </div>
         </div>
@@ -780,126 +957,106 @@
         var editingId = 0;
 
         var initialData = [
-            {
-                id: 1, title: "Hamlet - Una Tragedia Sin Tiempo", category: "Clásico", date: "15 Feb 2026",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
-                description: "Obra de William Shakespeare. Dirección: Carlos Martínez.",
-                excerpt: "Una puesta en escena que desafía la gravedad del texto original.", fullReview: "La compañía Nacional de Teatro nos entrega una versión de Hamlet...", rating: 5, likes: 0
-            },
-            {
-                id: 2, title: "La Casa de Bernarda Alba", category: "Drama", date: "10 Feb 2026",
-                image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800&q=80",
-                description: "Texto de Federico García Lorca. Dirección: Ana Ruiz.",
-                excerpt: "Lorca vive y respira en esta producción.", fullReview: "Pocas obras logran crear una atmósfera tan densa...", rating: 4, likes: 0
-            },
-            {
-                id: 3, title: "Esperando a Godot", category: "Experimental", date: "5 Feb 2026",
-                image: "https://images.unsplash.com/photo-1580130775562-0ef92da028de?w=800&q=80",
-                description: "Texto de Samuel Beckett.",
-                excerpt: "Beckett en clave contemporánea.", fullReview: "La apuesta de actualizar a Beckett siempre es arriesgada.", rating: 3, likes: 0
-            }
+            { id: 1, title: "Hamlet - Una Tragedia Sin Tiempo", category: "Clásico", date: "15 Feb 2026", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80", description: "Obra de William Shakespeare. Dirección: Carlos Martínez.", excerpt: "Una puesta en escena que desafía la gravedad del texto original.", fullReview: "La compañía Nacional de Teatro nos entrega una versión de Hamlet...", rating: 5, likes: 0 },
+            { id: 2, title: "La Casa de Bernarda Alba", category: "Drama", date: "10 Feb 2026", image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800&q=80", description: "Texto de Federico García Lorca. Dirección: Ana Ruiz.", excerpt: "Lorca vive y respira en esta producción.", fullReview: "Pocas obras logran crear una atmósfera tan densa...", rating: 4, likes: 0 },
+            { id: 3, title: "Esperando a Godot", category: "Experimental", date: "5 Feb 2026", image: "https://images.unsplash.com/photo-1580130775562-0ef92da028de?w=800&q=80", description: "Texto de Samuel Beckett.", excerpt: "Beckett en clave contemporánea.", fullReview: "La apuesta de actualizar a Beckett siempre es arriesgada.", rating: 3, likes: 0 }
         ];
 
-        /* ---- Store ---- */
         function getReviews() {
             var d = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
             if (!d) { d = initialData; localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
             return d;
         }
 
-        /* ---- Logic ---- */
+        /* ── AUTH ── */
         function checkLogin() {
             var p = document.getElementById('admin-pass');
             var err = document.getElementById('login-error');
             if (p.value === 'admin123') {
                 localStorage.setItem('iv_muro_admin', 'true');
                 showDashboard();
-                migrateImages(); // Auto-migration on login
+                migrateImages();
             } else {
                 err.style.display = 'flex';
                 p.value = '';
+                p.focus();
             }
         }
+        function handleLogout() { localStorage.removeItem('iv_muro_admin'); showLogin(); }
 
-        function handleLogout() {
-            localStorage.removeItem('iv_muro_admin');
-            showLogin();
-        }
-
+        /* ── VIEWS ── */
         function showLogin() {
             document.getElementById('view-login').style.display = 'block';
             document.getElementById('view-dashboard').style.display = 'none';
             document.getElementById('view-editor').style.display = 'none';
         }
-
         function showDashboard() {
             editingId = 0;
-            renderTable();
+            renderList();
             document.getElementById('view-login').style.display = 'none';
             document.getElementById('view-dashboard').style.display = 'block';
             document.getElementById('view-editor').style.display = 'none';
             window.scrollTo(0, 0);
         }
+        function showEditor(id) {
+            editingId = id;
+            var label = id === 0 ? 'Nueva Crítica' : 'Editar Crítica';
+            document.getElementById('editor-title-text').textContent = label;
+            document.getElementById('editor-nav-title').textContent = label;
+            document.getElementById('view-dashboard').style.display = 'none';
+            document.getElementById('view-editor').style.display = 'block';
+            window.scrollTo(0, 0);
+            if (id === 0) { clearForm(); } else {
+                var r = getReviews().find(function (x) { return x.id === id; });
+                if (r) fillForm(r);
+            }
+        }
 
-        function renderTable() {
+        /* ── RENDER LIST (card-based, mobile-friendly) ── */
+        function renderList() {
             var reviews = getReviews();
-            var tbody = document.getElementById('reviews-table-body');
-            if (reviews.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-meta);padding:40px">Sin críticas</td></tr>';
+            var list = document.getElementById('review-list');
+            if (!reviews.length) {
+                list.innerHTML = '<div style="text-align:center;padding:48px 20px;color:var(--text-meta)"><i class="fas fa-theater-masks" style="font-size:40px;opacity:.3;display:block;margin-bottom:12px"></i>Sin críticas publicadas</div>';
                 return;
             }
             var html = '';
             for (var i = 0; i < reviews.length; i++) {
                 var r = reviews[i];
-                html += '<tr>' +
-                    '<td><div style="display:flex;align-items:center;gap:12px">' +
-                    (r.image ? '<img src="' + r.image + '" class="review-thumb">' : '') +
-                    '<span style="font-weight:600;color:var(--text-main)">' + r.title + '</span></div></td>' +
-                    '<td><span class="flair-tag">' + r.category + '</span></td>' +
-                    '<td style="color:var(--text-meta)">' + r.date + '</td>' +
-                    '<td style="color:var(--amber);font-weight:700">🦗 ' + r.rating + '/5</td>' +
-                    '<td style="color:var(--green-bright);font-weight:700">' + (r.likes || 0) + ' ❤</td>' +
-                    '<td><div class="action-row">' +
-                    '<button class="mod-action-btn edit" onclick="showEditor(' + r.id + ')"><i class="fas fa-edit"></i></button>' +
-                    '<button class="mod-action-btn del" onclick="deleteReview(' + r.id + ')"><i class="fas fa-trash"></i></button>' +
-                    '</div></td></tr>';
+                var thumbHtml = r.image
+                    ? '<img src="' + r.image + '" class="review-card-thumb" onerror="this.style.display=\'none\'">'
+                    : '<div class="review-card-thumb-placeholder">🎭</div>';
+                html += '<div class="review-card">' +
+                    thumbHtml +
+                    '<div class="review-card-body">' +
+                    '<div class="review-card-title">' + r.title + '</div>' +
+                    '<div class="review-card-meta">' +
+                    '<span class="flair-tag">' + r.category + '</span>' +
+                    '<span class="review-card-rating">🦗 ' + r.rating + '/5</span>' +
+                    '<span class="review-card-date">' + r.date + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="review-card-actions">' +
+                    '<button class="mod-btn edit" onclick="showEditor(' + r.id + ')" title="Editar"><i class="fas fa-edit"></i></button>' +
+                    '<button class="mod-btn del" onclick="deleteReview(' + r.id + ')" title="Eliminar"><i class="fas fa-trash"></i></button>' +
+                    '</div>' +
+                    '</div>';
             }
-            tbody.innerHTML = html;
+            list.innerHTML = html;
         }
 
-        function showEditor(id) {
-            editingId = id;
-            document.getElementById('view-dashboard').style.display = 'none';
-            document.getElementById('view-editor').style.display = 'block';
-            window.scrollTo(0, 0);
-
-            if (id === 0) {
-                document.getElementById('editor-title-text').textContent = 'Nueva Crítica';
-                clearForm();
-            } else {
-                document.getElementById('editor-title-text').textContent = 'Editar Crítica';
-                var reviews = getReviews();
-                var r = reviews.find(x => x.id === id);
-                if (r) fillForm(r);
-            }
-        }
-
+        /* ── FORM ── */
         function clearForm() {
-            document.getElementById('e-title').value = '';
+            ['e-title', 'e-date', 'e-desc', 'e-excerpt', 'e-full'].forEach(function (id) { document.getElementById(id).value = ''; });
             document.getElementById('e-category').value = 'Drama';
-            document.getElementById('e-date').value = '';
             document.getElementById('e-image').value = '';
             document.getElementById('e-image-file').value = '';
-            document.getElementById('img-filename').textContent = 'Clic para subir imagen';
+            document.getElementById('img-filename').textContent = 'Toca para subir imagen';
             document.getElementById('img-filename').style.color = 'var(--text-meta)';
             document.getElementById('preview-img').src = '';
             document.getElementById('img-preview').style.display = 'none';
-            document.getElementById('e-desc').value = '';
-            document.getElementById('e-excerpt').value = '';
-            document.getElementById('e-full').value = '';
             document.getElementById('s3').checked = true;
         }
-
         function fillForm(r) {
             document.getElementById('e-title').value = r.title;
             document.getElementById('e-category').value = r.category;
@@ -907,8 +1064,6 @@
             document.getElementById('e-desc').value = r.description || '';
             document.getElementById('e-excerpt').value = r.excerpt;
             document.getElementById('e-full').value = r.fullReview;
-
-            // Image handling
             if (r.image) {
                 document.getElementById('e-image').value = r.image;
                 document.getElementById('preview-img').src = r.image;
@@ -919,12 +1074,10 @@
                 document.getElementById('e-image').value = '';
                 document.getElementById('preview-img').src = '';
                 document.getElementById('img-preview').style.display = 'none';
-                document.getElementById('img-filename').textContent = 'Clic para subir imagen';
+                document.getElementById('img-filename').textContent = 'Toca para subir imagen';
                 document.getElementById('img-filename').style.color = 'var(--text-meta)';
             }
-
-            var rVal = r.rating || 3;
-            var radio = document.querySelector('input[name="rating"][value="' + rVal + '"]');
+            var radio = document.querySelector('input[name="rating"][value="' + (r.rating || 3) + '"]');
             if (radio) radio.checked = true;
         }
 
@@ -942,66 +1095,59 @@
                     var x = (724 - img.width * scale) / 2;
                     var y = (1024 - img.height * scale) / 2;
                     ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
-
                     var dataUrl = canvas.toDataURL('image/jpeg', 0.85);
                     document.getElementById('e-image').value = dataUrl;
                     document.getElementById('preview-img').src = dataUrl;
                     document.getElementById('img-preview').style.display = 'block';
-                    document.getElementById('img-filename').textContent = '✓ ' + file.name + ' (Redimensionada)';
+                    document.getElementById('img-filename').textContent = '✓ ' + file.name;
                     document.getElementById('img-filename').style.color = 'var(--green-bright)';
                 };
                 img.src = e.target.result;
             };
             reader.readAsDataURL(file);
         }
-
         function removeImage() {
             document.getElementById('e-image').value = '';
             document.getElementById('e-image-file').value = '';
             document.getElementById('preview-img').src = '';
             document.getElementById('img-preview').style.display = 'none';
-            document.getElementById('img-filename').textContent = 'Clic para subir imagen';
+            document.getElementById('img-filename').textContent = 'Toca para subir imagen';
             document.getElementById('img-filename').style.color = 'var(--text-meta)';
         }
 
         function saveReview() {
             var title = document.getElementById('e-title').value.trim();
-            if (!title) { showToast('Falta el título'); return; }
-
+            if (!title) { showToast('⚠ Falta el título'); return; }
             var reviews = getReviews();
             var rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
-
             var newReview = {
                 id: editingId || Date.now(),
                 title: title,
                 category: document.getElementById('e-category').value,
-                date: document.getElementById('e-date').value || new Date().toLocaleDateString(),
+                date: document.getElementById('e-date').value || new Date().toLocaleDateString('es-CR'),
                 image: document.getElementById('e-image').value,
                 description: document.getElementById('e-desc').value,
                 excerpt: document.getElementById('e-excerpt').value,
                 fullReview: document.getElementById('e-full').value,
                 rating: rating,
-                likes: editingId ? (reviews.find(x => x.id === editingId)?.likes || 0) : 0
+                likes: editingId ? ((reviews.find(function (x) { return x.id === editingId; }) || {}).likes || 0) : 0
             };
-
             if (editingId) {
-                var idx = reviews.findIndex(x => x.id === editingId);
+                var idx = reviews.findIndex(function (x) { return x.id === editingId; });
                 if (idx !== -1) reviews[idx] = newReview;
             } else {
                 reviews.unshift(newReview);
             }
-
             localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
-            showToast('Crítica guardada exitosamente');
+            showToast('✓ Crítica guardada');
             showDashboard();
         }
 
         function deleteReview(id) {
-            if (!confirm('¿Seguro quieres borrar esta crítica?')) return;
-            var reviews = getReviews();
-            var filtered = reviews.filter(x => x.id !== id);
+            if (!confirm('¿Eliminar esta crítica?')) return;
+            var filtered = getReviews().filter(function (x) { return x.id !== id; });
             localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
-            renderTable();
+            renderList();
             showToast('Crítica eliminada');
         }
 
@@ -1009,39 +1155,32 @@
             var t = document.getElementById('toast');
             t.textContent = msg;
             t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 3000);
+            setTimeout(function () { t.classList.remove('show'); }, 3000);
         }
 
         function downloadJSON() {
             var data = localStorage.getItem(STORAGE_KEY);
-            if (!data) { showToast('No hay datos para descargar'); return; }
-
+            if (!data) { showToast('No hay datos'); return; }
             var blob = new Blob([data], { type: 'application/json' });
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
-            a.href = url;
-            a.download = 'reviews.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            showToast('Base de datos descargada');
+            a.href = url; a.download = 'reviews.json';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            showToast('✓ Base de datos descargada');
         }
 
-        /* ---- Image Migration ---- */
         function migrateImages() {
             if (localStorage.getItem('iv_muro_img_migrated_v2')) return;
             var reviews = getReviews();
             var pending = 0;
-
             function checkDone() {
                 if (pending === 0) {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
                     localStorage.setItem('iv_muro_img_migrated_v2', 'true');
-                    renderTable();
+                    renderList();
                 }
             }
-
-            reviews.forEach(r => {
+            reviews.forEach(function (r) {
                 if (r.image && r.image.startsWith('http')) {
                     pending++;
                     var img = new Image();
@@ -1055,8 +1194,7 @@
                         var y = (1024 - img.height * scale) / 2;
                         ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
                         r.image = canvas.toDataURL('image/jpeg', 0.85);
-                        pending--;
-                        checkDone();
+                        pending--; checkDone();
                     };
                     img.onerror = function () { pending--; checkDone(); };
                     img.src = r.image;
@@ -1065,7 +1203,7 @@
             if (pending === 0) localStorage.setItem('iv_muro_img_migrated_v2', 'true');
         }
 
-        /* ---- Init ---- */
+        /* ── INIT ── */
         if (localStorage.getItem('iv_muro_admin') === 'true') {
             showDashboard();
             setTimeout(migrateImages, 1000);
