@@ -664,7 +664,8 @@
 
         async function loadReviews() {
             try {
-                const response = await fetch('reviews.json');
+                // Cache busting
+                const response = await fetch('reviews.json?v=' + new Date().getTime());
                 if (!response.ok) throw new Error('Network response was not ok');
                 allReviews = await response.json();
                 // Optional: Merge with local likes

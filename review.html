@@ -475,7 +475,8 @@
 
             var reviews = [];
             try {
-                const response = await fetch('reviews.json');
+                // Cache busting
+                const response = await fetch('reviews.json?v=' + new Date().getTime());
                 if (response.ok) reviews = await response.json();
             } catch (e) {
                 console.log('Error loading json, trying local');
