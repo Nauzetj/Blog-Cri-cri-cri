@@ -1,38 +1,74 @@
 [
   {
-    "id": 1, 
-    "title": "Hamlet - Una Tragedia Sin Tiempo", 
-    "category": "Clásico", 
+    "id": 1,
+    "title": "Hamlet - Una Tragedia Sin Tiempo",
+    "category": "Clásico",
     "date": "15 Feb 2026",
     "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
     "description": "Obra de William Shakespeare. Dirección: Carlos Martínez. Elenco: Pedro Alonso (Hamlet), María García (Ofelia). Duración: 2h 30min. Teatro Nacional.",
     "excerpt": "Una puesta en escena que desafía la gravedad del texto original. El director logra lo imposible: hacer que Shakespeare se sienta urgente.",
-    "fullReview": "La compañía Nacional de Teatro nos entrega una versión de Hamlet que pocas veces se ve en nuestras tablas. El protagonista logra transmitir la duda existencial del príncipe danés sin caer en los clichés habituales. La escenografía minimalista obliga al espectador a concentrarse en lo que realmente importa: las palabras y los cuerpos.",
-    "rating": 5, 
-    "likes": 0
+    "fullReview": "La compañía Nacional de Teatro nos entrega una versión de Hamlet que pocas veces se ve en nuestras tablas. El protagonista logra transmitir la duda existencial del príncipe danés sin caer en los clichés habituales. La escenografía minimalista obliga al espectador a concentrarse en lo que realmente importa: las palabras y los cuerpos.\n\nEl diseño de luces merece una mención aparte, creando espacios psicológicos que acompañan el descenso a la locura del protagonista. Sin embargo, el ritmo decae ligeramente en el tercer acto, aunque se recupera para un final devastador.",
+    "rating": 5,
+    "likes": 12
   },
   {
-    "id": 2, 
-    "title": "La Casa de Bernarda Alba", 
-    "category": "Drama", 
+    "id": 2,
+    "title": "La Casa de Bernarda Alba",
+    "category": "Drama",
     "date": "10 Feb 2026",
     "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800&q=80",
     "description": "Texto de Federico García Lorca. Dirección: Ana Ruiz. Elenco enteramente femenino. Duración: 1h 45min. Teatro Lorca.",
     "excerpt": "Lorca vive y respira en esta producción. La opresión se siente física, casi tangible desde la primera fila.",
-    "fullReview": "Pocas obras logran crear una atmósfera tan densa como esta versión de Bernarda Alba. El director apostó por un espacio escénico cerrado, claustrofóbico. Las actrices entregan actuaciones de una precisión quirúrgica.",
-    "rating": 4, 
-    "likes": 0
+    "fullReview": "Pocas obras logran crear una atmósfera tan densa como esta versión de Bernarda Alba. El director apostó por un espacio escénico cerrado, claustrofóbico. Las actrices entregan actuaciones de una precisión quirúrgica, destacando especialmente a la matriarca, cuya sola presencia llena el escenario.\n\nEl vestuario, rigurosamente negro, contrasta con la blancura enfermiza de las paredes, subrayando el luto eterno en el que viven los personajes. Una experiencia teatral intensa y necesaria.",
+    "rating": 4,
+    "likes": 8
   },
   {
-    "id": 3, 
-    "title": "Esperando a Godot", 
-    "category": "Experimental", 
+    "id": 3,
+    "title": "Esperando a Godot",
+    "category": "Experimental",
     "date": "5 Feb 2026",
     "image": "https://images.unsplash.com/photo-1580130775562-0ef92da028de?w=800&q=80",
     "description": "Texto de Samuel Beckett. Dirección: Javier Moreno. Duración: 2h. Sala Alternativa del Centro Cultural.",
-    "excerpt": "Beckett en clave contemporánea. Funciona a medias.",
-    "fullReview": "La apuesta de actualizar a Beckett siempre es arriesgada. Los primeros dos actos son fascinantes.",
-    "rating": 3, 
-    "likes": 0
+    "excerpt": "Beckett en clave contemporánea. Funciona a medias, pero visualmente es impactante.",
+    "fullReview": "La apuesta de actualizar a Beckett siempre es arriesgada. Los primeros dos actos son fascinantes, con un Vladimir y Estragón que parecen salidos de una película de ciencia ficción distópica. Sin embargo, algunas decisiones de dirección distraen del texto, que debería ser el centro absoluto.\n\nVisualmente es una joya, con un árbol holográfico que cambia según el estado de ánimo de los personajes. Vale la pena verla solo por la propuesta estética, aunque los puristas de Beckett podrían sentirse alienados.",
+    "rating": 3,
+    "likes": 4
+  },
+  {
+    "id": 4,
+    "title": "Chicago - El Musical",
+    "category": "Musical",
+    "date": "28 Ene 2026",
+    "image": "https://images.unsplash.com/photo-1514306191717-452ec28c7f42?w=800&q=80",
+    "description": "Música de John Kander. Coreografía original de Bob Fosse. Duración: 2h 15min. Teatro Melico Salazar.",
+    "excerpt": "Jazz, crimen y lentejuelas. Una producción impecable que no tiene nada que envidiarle a Broadway.",
+    "fullReview": "Desde el primer acorde de 'All That Jazz', sabes que estás ante algo grande. La orquesta en vivo suena potente y precisa. Las coreografías respetan el estilo Fosse pero con una energía renovada gracias al joven elenco.\n\nRoxie Hart y Velma Kelly tienen una química explosiva en el escenario. Quizás el único punto débil sea el diseño de sonido, que en momentos saturaba las voces principales. Por lo demás, un espectáculo de primer nivel.",
+    "rating": 5,
+    "likes": 25
+  },
+  {
+    "id": 5,
+    "title": "Edipo Rey",
+    "category": "Tragedia",
+    "date": "15 Ene 2026",
+    "image": "https://images.unsplash.com/photo-1533669955278-65a67bfe7a3d?w=800&q=80",
+    "description": "Sófocles. Versión libre de Mario Vargas. Duración: 1h 30min. Anfiteatro Municipal.",
+    "excerpt": "Una tragedia griega bajo las estrellas. La máscara cae, pero la emoción perdura.",
+    "fullReview": "Ver Edipo Rey al aire libre tiene una magia especial. Esta versión moderna utiliza máscaras tradicionales pero con vestuario contemporáneo, creando un puente interesante entre el pasado y el presente. \n\nEl coro griego, transformado aquí en un grupo de ciudadanos modernos, funciona como un espejo perfecto de nuestra propia sociedad. El actor principal sostiene la obra con una fuerza visceral, llevando al público de la mano hacia su inevitable destino.",
+    "rating": 4,
+    "likes": 10
+  },
+  {
+    "id": 6,
+    "title": "Risa en Tiempos de Cólera",
+    "category": "Comedia",
+    "date": "02 Ene 2026",
+    "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&q=80",
+    "description": "Stand-up y sketches. Varios artistas nacionales. Duración: 2h. El Triciclo.",
+    "excerpt": "Hilarante, irreverente y justo lo que necesitábamos. No apto para cardíacos.",
+    "fullReview": "Un show de variedades que mezcla stand-up clásico con sketches absurdos. La improvisación es el punto fuerte de la noche, con interacción constante con el público. \n\nAlgunos chistes caminan por la cuerda floja de lo políticamente incorrecto, pero la risa es constante. Destaca el segmento musical final, una parodia brillante de la política nacional.",
+    "rating": 5,
+    "likes": 30
   }
 ]
